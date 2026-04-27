@@ -49,16 +49,16 @@ export function LeadCaptureForm({
       onSubmit={handleSubmit}
     >
       <div className="mb-6">
-        <h3 className="text-2xl font-semibold tracking-[-0.03em] text-brand-ink">{title}</h3>
+        <h3 className="card-title text-2xl text-brand-ink">{title}</h3>
         <p className="mt-3 text-sm leading-6 text-brand-muted">{description}</p>
-        <div className="mt-4 flex flex-wrap gap-2 text-xs font-medium tracking-[0.08em] text-brand-muted/90">
-          <span className="rounded-full border border-brand-line bg-brand-surface px-3 py-1 uppercase">
+        <div className="mt-4 flex flex-wrap gap-2 text-brand-muted/90">
+          <span className="overline rounded-full border border-brand-line bg-brand-surface px-3 py-1">
             Business inquiries welcome
           </span>
-          <span className="rounded-full border border-brand-line bg-brand-surface px-3 py-1 uppercase">
+          <span className="overline rounded-full border border-brand-line bg-brand-surface px-3 py-1">
             No obligation
           </span>
-          <span className="rounded-full border border-brand-line bg-brand-surface px-3 py-1 uppercase">
+          <span className="overline rounded-full border border-brand-line bg-brand-surface px-3 py-1">
             Fast follow-up
           </span>
         </div>

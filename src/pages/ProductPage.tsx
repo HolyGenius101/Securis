@@ -13,19 +13,19 @@ const trustSignals = [
 export function ProductPage() {
   return (
     <>
-      <section className="overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#0a2b56_60%,#f7efe3_60%,#fcfbf7_100%)]">
-        <Container className="grid gap-12 py-16 md:py-20 lg:grid-cols-[0.98fr_1.02fr] lg:items-center">
-          <Reveal>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-brand-mint">
+      <section className="overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#0a2b56_58%,#102f5a_100%)]">
+        <Container className="grid gap-10 py-14 md:gap-12 md:py-20 lg:grid-cols-[minmax(0,0.98fr)_minmax(0,1.02fr)] lg:items-center">
+          <Reveal className="max-w-3xl">
+            <p className="hero-eyebrow text-brand-mint">
               {productPageData.hero.eyebrow}
             </p>
-            <h1 className="max-w-3xl text-[2.95rem] font-semibold leading-[0.94] tracking-[-0.05em] text-white md:text-[4.8rem]">
+            <h1 className="hero-title">
               {productPageData.hero.title}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
+            <p className="hero-copy">
               {productPageData.hero.description}
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Button href="/contact">Talk to the team</Button>
               <Button href="/for-businesses" variant="secondary">
                 For businesses
@@ -43,17 +43,17 @@ export function ProductPage() {
             </div>
           </Reveal>
           <Reveal>
-            <div className="dark-panel p-5 sm:p-6">
-              <div className="grid gap-4 lg:grid-cols-[1.06fr_0.94fr]">
+            <div className="dark-panel p-4 sm:p-5 lg:p-6">
+              <div className="grid gap-4 xl:grid-cols-[1.06fr_0.94fr]">
                 <img
                   alt="Securis product mounted in a gym"
-                  className="w-full rounded-[28px] border border-white/10 object-cover shadow-[var(--shadow-hero)]"
+                  className="min-h-[320px] w-full rounded-[28px] border border-white/10 object-cover shadow-[var(--shadow-hero)] sm:min-h-[420px]"
                   src={productPageData.hero.image}
                 />
                 <div className="grid gap-4">
                   {productPageData.specs.map((spec) => (
                     <div className="glass-panel p-5" key={spec.label}>
-                      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-mint">
+                      <p className="overline text-brand-mint">
                         {spec.label}
                       </p>
                       <p className="mt-3 text-base leading-7 text-white/76">{spec.value}</p>
@@ -75,10 +75,10 @@ export function ProductPage() {
               description="The product page should make it clear where Securis belongs, what behavior it supports, and why it improves the surrounding environment."
             />
           </Reveal>
-          <div className="mt-10 grid gap-4 lg:grid-cols-[0.92fr_1.08fr]">
+          <div className="mt-10 grid gap-4 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
             <Reveal className="h-full">
               <div className="light-panel h-full p-7">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-green">Where it works</p>
+                <p className="overline text-brand-green">Where it works</p>
                 <div className="mt-6 space-y-3">
                   {productPageData.useCases.map((item) => (
                     <div className="rounded-2xl border border-brand-border bg-white/70 px-5 py-4 text-base text-brand-ink" key={item}>
@@ -96,10 +96,10 @@ export function ProductPage() {
                   description="The right product framing is about visible convenience, cleaner presentation, and a better experience at the exact moment customers need somewhere to place their essentials."
                   tone="light"
                 />
-                <div className="mt-8 grid gap-4 md:grid-cols-3">
+                <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                   {productPageData.details.map((detail) => (
                     <div className="rounded-[24px] border border-white/10 bg-white/6 p-5" key={detail.title}>
-                      <h3 className="text-xl font-semibold tracking-[-0.03em] text-white">{detail.title}</h3>
+                      <h3 className="card-title text-xl text-white">{detail.title}</h3>
                       <p className="mt-3 text-sm leading-6 text-white/70">{detail.description}</p>
                     </div>
                   ))}
@@ -120,12 +120,12 @@ export function ProductPage() {
               description="Real product photos help the pitch land quickly by showing what it holds, where it belongs, and how it cleans up the surrounding space."
             />
           </Reveal>
-          <div className="mt-10 grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
+          <div className="mt-10 grid gap-4 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)]">
             <Reveal>
               <div className="overflow-hidden rounded-[28px] border border-brand-border bg-brand-surface shadow-[var(--shadow-soft)]">
                 <img
                   alt={productPageData.gallery[0].title}
-                  className="h-full min-h-[440px] w-full object-cover"
+                  className="h-full min-h-[300px] w-full object-cover sm:min-h-[440px]"
                   src={productPageData.gallery[0].image}
                 />
               </div>
@@ -134,7 +134,7 @@ export function ProductPage() {
               {productPageData.gallery.map((image) => (
                 <Reveal key={image.title}>
                   <div className="overflow-hidden rounded-[24px] border border-brand-border bg-brand-surface shadow-[var(--shadow-soft)]">
-                    <img alt={image.title} className="h-56 w-full object-cover" src={image.image} />
+                    <img alt={image.title} className="h-44 w-full object-cover sm:h-56" src={image.image} />
                   </div>
                 </Reveal>
               ))}
@@ -153,7 +153,7 @@ export function ProductPage() {
                 tone="light"
                 title="Answer the questions that decide whether the conversation continues"
               />
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Button href="/for-businesses#lead-form">Request a demo</Button>
                 <Button href="/contact" variant="secondary">
                   Ask a specific question
@@ -165,7 +165,7 @@ export function ProductPage() {
             {productPageData.faqs.map((faq) => (
               <Reveal key={faq.question}>
                 <div className="light-panel p-6">
-                  <h3 className="text-xl font-semibold tracking-[-0.03em] text-brand-ink">{faq.question}</h3>
+                  <h3 className="card-title text-xl text-brand-ink">{faq.question}</h3>
                   <p className="mt-3 text-base leading-7 text-brand-muted">{faq.answer}</p>
                 </div>
               </Reveal>

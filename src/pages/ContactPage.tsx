@@ -6,8 +6,8 @@ import { site } from '../lib/site'
 
 export function ContactPage() {
   return (
-    <section className="bg-[linear-gradient(180deg,#000000_0%,#0a2b56_52%,#fcf7ee_52%,#fcf7ee_100%)] py-16 md:py-20">
-      <Container className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
+    <section className="bg-[linear-gradient(180deg,#000000_0%,#0a2b56_58%,#102f5a_100%)] py-16 md:py-20">
+      <Container className="grid gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
         <Reveal>
           <div className="dark-panel p-8 md:p-10">
             <SectionIntro
@@ -28,7 +28,7 @@ export function ContactPage() {
               </div>
             </div>
             <div className="mt-8 rounded-[24px] border border-white/10 bg-white/6 p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-mint">
+              <p className="overline text-brand-mint">
                 Direct contact
               </p>
               <a className="mt-3 inline-block text-lg font-medium text-white" href={`mailto:${site.email}`}>

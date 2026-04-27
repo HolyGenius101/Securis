@@ -26,14 +26,14 @@ export function Footer() {
           </div>
 
           <div className="space-y-4">
-            <div className="flex flex-wrap gap-4 text-sm text-white/62">
+            <div className="flex flex-wrap gap-4 text-[0.8rem] font-semibold uppercase tracking-[0.16em] text-white/62">
               {navigationLinks.map((link) => (
                 <Link className="transition hover:text-white" key={link.href} to={link.href}>
                   {link.label}
                 </Link>
               ))}
             </div>
-            <div className="text-xs uppercase tracking-[0.18em] text-white/42">
+            <div className="overline text-white/42">
               Built for better customer touchpoints
             </div>
           </div>

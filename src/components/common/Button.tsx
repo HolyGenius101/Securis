@@ -13,7 +13,7 @@ type ButtonProps = {
 }
 
 const baseClassName =
-  'inline-flex h-12 items-center justify-center rounded-full px-5 text-sm font-semibold tracking-[-0.01em] transition duration-300 ease-out'
+  'inline-flex h-12 w-full items-center justify-center rounded-full px-5 text-center text-sm font-semibold tracking-[0.01em] transition duration-300 ease-out sm:w-auto'
 
 export function Button({
   href,

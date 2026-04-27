@@ -26,7 +26,7 @@ export function FormField({
 }: FormFieldProps) {
   return (
     <label className="block">
-      <span className="mb-2 block text-sm font-medium text-brand-ink">
+      <span className="mb-2 block text-sm font-semibold tracking-[-0.01em] text-brand-ink">
         {label}
         {required ? ' *' : ''}
       </span>

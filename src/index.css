@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
 @import 'tailwindcss';
 
 @theme {
@@ -15,7 +16,8 @@
   --color-brand-surface-strong: #f4ebde;
   --color-brand-night: #000000;
   --color-brand-night-soft: #17100d;
-  --font-sans: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Instrument Sans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Outfit', 'Avenir Next', 'Segoe UI', sans-serif;
   --shadow-soft: 0 24px 80px rgba(43, 26, 18, 0.08);
   --shadow-panel: 0 28px 90px rgba(10, 99, 201, 0.18);
   --shadow-hero: 0 42px 120px rgba(0, 0, 0, 0.28);
@@ -42,7 +44,9 @@ body {
   background: var(--gradient-shell);
   color: var(--color-brand-ink);
   font-family: var(--font-sans);
-  font-size: 17.5px;
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -62,7 +66,7 @@ body {
 }
 
 @utility section-pad {
-  @apply py-20 md:py-24 lg:py-28;
+  @apply py-16 md:py-24 lg:py-28;
 }
 
 @utility surface-border {
@@ -70,11 +74,51 @@ body {
 }
 
 @utility section-title {
-  @apply max-w-3xl text-[2.7rem] font-semibold tracking-[-0.045em] text-brand-ink md:text-[3.45rem];
+  font-family: var(--font-display);
+  max-width: 12ch;
+  font-size: clamp(2.2rem, 4vw + 1rem, 3.15rem);
+  text-wrap: balance;
+  @apply font-semibold leading-[0.98] tracking-[-0.045em] text-brand-ink;
 }
 
 @utility section-copy {
-  @apply max-w-2xl text-[1.06rem] leading-8 text-brand-muted md:text-[1.15rem];
+  font-size: clamp(1rem, 0.25vw + 0.95rem, 1.12rem);
+  @apply max-w-2xl leading-7 text-brand-muted md:leading-8;
+}
+
+@utility section-eyebrow {
+  font-family: var(--font-display);
+  @apply inline-flex text-[0.76rem] font-semibold uppercase tracking-[0.24em];
+}
+
+@utility hero-eyebrow {
+  font-family: var(--font-display);
+  @apply mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.2em] sm:text-[0.76rem] sm:tracking-[0.24em];
+}
+
+@utility hero-title {
+  font-family: var(--font-display);
+  max-width: 8ch;
+  font-size: clamp(2.65rem, 6vw + 1rem, 4.45rem);
+  text-wrap: balance;
+  @apply font-semibold leading-[0.92] tracking-[-0.05em] text-white;
+}
+
+@utility hero-copy {
+  font-size: clamp(1rem, 0.35vw + 0.95rem, 1.14rem);
+  text-wrap: pretty;
+  @apply mt-6 max-w-xl leading-7 text-white/72 md:max-w-2xl md:leading-8;
+}
+
+@utility card-title {
+  font-family: var(--font-display);
+  text-wrap: balance;
+  @apply font-semibold tracking-[-0.035em];
+}
+
+@utility overline {
+  font-family: var(--font-display);
+  @apply text-[0.76rem] font-semibold uppercase tracking-[0.2em];
 }
 
 @utility glass-panel {
@@ -109,6 +153,17 @@ body {
 
   a {
     @apply text-inherit no-underline;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.035em;
+    text-wrap: balance;
   }
 
   img {

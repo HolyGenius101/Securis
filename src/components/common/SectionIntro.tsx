@@ -22,7 +22,7 @@ export function SectionIntro({
     <div className={alignmentClassName}>
       {eyebrow ? (
         <p
-          className={`mb-4 inline-flex rounded-full border px-4 py-1.5 text-[0.78rem] font-semibold uppercase tracking-[0.22em] ${
+          className={`section-eyebrow mb-4 rounded-full border px-4 py-1.5 ${
             tone === 'light'
               ? 'border-white/12 bg-white/6 text-brand-mint'
               : 'border-brand-border/70 bg-white/72 text-brand-green'

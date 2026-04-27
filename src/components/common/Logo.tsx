@@ -18,7 +18,7 @@ export function Logo({ className, compact = false, tone = 'light' }: LogoProps) 
       : 'border-brand-border/70 bg-white/88 shadow-[0_18px_38px_rgba(16,34,23,0.08)]'
 
   return (
-    <Link className={cn('inline-flex items-center gap-3.5', className)} to="/">
+    <Link className={cn('inline-flex min-w-0 items-center gap-3 sm:gap-3.5', className)} to="/">
       <img
         alt={`${site.name} logo`}
         className={cn(
@@ -28,17 +28,22 @@ export function Logo({ className, compact = false, tone = 'light' }: LogoProps) 
         )}
         src={logo}
       />
-      <div>
+      <div className="min-w-0">
         <div
           className={cn(
-            'text-[1.15rem] font-semibold tracking-[-0.04em]',
+            'card-title truncate text-[1.05rem] text-balance sm:text-[1.15rem]',
             titleClassName,
             compact && 'text-base',
           )}
         >
           {site.name}
         </div>
-        <div className={cn('text-[0.68rem] uppercase tracking-[0.16em]', taglineClassName)}>
+        <div
+          className={cn(
+            'overline hidden text-[0.68rem] tracking-[0.18em] lg:block',
+            taglineClassName,
+          )}
+        >
           {site.tagline}
         </div>
       </div>
