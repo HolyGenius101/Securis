@@ -102,6 +102,16 @@ export function useLeadForm(
       return
     }
 
+    const { error: emailError } = await supabase.functions.invoke('notify-contact-submission', {
+      body: payload,
+    })
+
+    if (emailError) {
+      setStatus('error')
+      setErrorMessage('Your request was saved, but the email notification failed. Please check Supabase.')
+      return
+    }
+
     setStatus('success')
     setValues({
       ...initialValues,
