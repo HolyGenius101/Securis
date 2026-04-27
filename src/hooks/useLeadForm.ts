@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { supabase } from '../lib/supabase'
-import type { FieldErrors, LeadFormValues } from '../types/forms'
+import type { FieldErrors, LeadFormStatus, LeadFormValues } from '../types/forms'
 
 const initialValues: LeadFormValues = {
   name: '',
@@ -21,6 +21,9 @@ function validate(values: LeadFormValues): FieldErrors {
   const email = values.email.trim().toLowerCase()
   const name = normalizeWhitespace(values.name)
   const message = normalizeWhitespace(values.message)
+  const gymName = normalizeWhitespace(values.gymName)
+  const isBusinessInquiry =
+    values.interestType === 'gym-owner' || values.interestType === 'general'
 
   if (name.length < 2) {
     errors.name = 'Enter your name.'
@@ -30,8 +33,11 @@ function validate(values: LeadFormValues): FieldErrors {
     errors.email = 'Enter a valid email.'
   }
 
-  if (values.interestType === 'gym-owner' && normalizeWhitespace(values.gymName).length < 2) {
-    errors.gymName = 'Tell us which gym or facility this is for.'
+  if (isBusinessInquiry && gymName.length < 2) {
+    errors.gymName =
+      values.interestType === 'gym-owner'
+        ? 'Tell us which gym or facility this is for.'
+        : 'Tell us which business or venue this is for.'
   }
 
   if (message.length < 10) {
@@ -49,10 +55,14 @@ export function useLeadForm(
     ...defaults,
   })
   const [errors, setErrors] = useState<FieldErrors>({})
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [status, setStatus] = useState<LeadFormStatus>('idle')
   const [errorMessage, setErrorMessage] = useState('')
 
   const isGymFlow = useMemo(() => values.interestType === 'gym-owner', [values.interestType])
+  const isBusinessInquiry = useMemo(
+    () => values.interestType === 'gym-owner' || values.interestType === 'general',
+    [values.interestType],
+  )
 
   function setField<K extends keyof LeadFormValues>(field: K, value: LeadFormValues[K]) {
     setValues((current) => ({ ...current, [field]: value }))
@@ -127,6 +137,7 @@ export function useLeadForm(
     status,
     errorMessage,
     isGymFlow,
+    isBusinessInquiry,
     setField,
     submit,
   }

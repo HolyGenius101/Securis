@@ -20,6 +20,14 @@ export const router = createBrowserRouter([
         element: <ProductPage />,
       },
       {
+        path: 'for-businesses',
+        element: <ForGymsPage />,
+      },
+      {
+        path: 'businesses',
+        element: <ForGymsPage />,
+      },
+      {
         path: 'for-gyms',
         element: <ForGymsPage />,
       },

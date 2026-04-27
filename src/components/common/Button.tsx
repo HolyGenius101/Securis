@@ -13,7 +13,7 @@ type ButtonProps = {
 }
 
 const baseClassName =
-  'inline-flex h-12 items-center justify-center rounded-lg px-5 text-sm font-semibold transition duration-200'
+  'inline-flex h-12 items-center justify-center rounded-full px-5 text-sm font-semibold tracking-[-0.01em] transition duration-300 ease-out'
 
 export function Button({
   href,
@@ -26,8 +26,8 @@ export function Button({
 }: ButtonProps) {
   const variantClassName =
     variant === 'primary'
-      ? 'bg-brand-green text-white hover:bg-brand-green-dark'
-      : 'border border-brand-border bg-white text-brand-ink hover:border-brand-green hover:text-brand-green'
+      ? 'border border-white/14 bg-[linear-gradient(135deg,#1e8cff_0%,#0a63c9_48%,#084d9b_100%)] text-white shadow-[var(--shadow-button)] hover:-translate-y-0.5 hover:shadow-[0_28px_70px_rgba(10,99,201,0.3)]'
+      : 'border border-brand-border/70 bg-white/78 text-brand-ink shadow-[0_16px_40px_rgba(43,26,18,0.06)] backdrop-blur-xl hover:-translate-y-0.5 hover:border-brand-green/40 hover:bg-white hover:text-brand-green'
 
   const resolvedClassName = cn(
     baseClassName,

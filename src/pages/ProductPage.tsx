@@ -4,132 +4,168 @@ import { Reveal } from '../components/common/Reveal'
 import { SectionIntro } from '../components/common/SectionIntro'
 import { productPageData } from '../data/product'
 
+const trustSignals = [
+  'Designed for high-traffic commercial environments.',
+  'Built around the phone-plus-essentials behavior owners already see every day.',
+  'Easy to understand in a first walkthrough, demo, or pilot conversation.',
+]
+
 export function ProductPage() {
   return (
     <>
-      <section className="border-b border-brand-border bg-white">
-        <Container className="grid gap-12 py-16 md:py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+      <section className="overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#0a2b56_60%,#f7efe3_60%,#fcfbf7_100%)]">
+        <Container className="grid gap-12 py-16 md:py-20 lg:grid-cols-[0.98fr_1.02fr] lg:items-center">
           <Reveal>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.08em] text-brand-green">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-brand-mint">
               {productPageData.hero.eyebrow}
             </p>
-            <h1 className="max-w-3xl text-[2.75rem] font-semibold leading-none tracking-normal text-brand-ink md:text-[4rem]">
+            <h1 className="max-w-3xl text-[2.95rem] font-semibold leading-[0.94] tracking-[-0.05em] text-white md:text-[4.8rem]">
               {productPageData.hero.title}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-brand-muted">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
               {productPageData.hero.description}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/contact">Talk to the team</Button>
-              <Button href="/for-gyms" variant="secondary">
-                For gyms
+              <Button href="/for-businesses" variant="secondary">
+                For businesses
               </Button>
             </div>
-          </Reveal>
-          <Reveal>
-            <img
-              alt="Securis product mounted in a gym"
-              className="w-full rounded-lg border border-brand-border object-cover shadow-[var(--shadow-panel)]"
-              src={productPageData.hero.image}
-            />
-          </Reveal>
-        </Container>
-      </section>
-
-      <section className="section-pad border-b border-brand-border bg-brand-surface">
-        <Container className="grid gap-10 lg:grid-cols-2">
-          <Reveal>
-            <SectionIntro
-              description="Securis is designed around the environments where devices and valuables are always close by but never properly placed."
-              title="Where it works"
-            />
-            <div className="mt-8 space-y-3">
-              {productPageData.useCases.map((item) => (
-                <div className="surface-border rounded-lg bg-white px-5 py-4 text-base text-brand-ink" key={item}>
+            <div className="mt-10 grid gap-3">
+              {trustSignals.map((item) => (
+                <div
+                  className="rounded-2xl border border-white/10 bg-white/6 px-5 py-4 text-sm leading-6 text-white/74"
+                  key={item}
+                >
                   {item}
                 </div>
               ))}
             </div>
           </Reveal>
           <Reveal>
-            <SectionIntro
-              description="A compact hardware footprint with a clear user job at every station."
-              title="Product focus"
-            />
-            <div className="mt-8 grid gap-4">
-              {productPageData.specs.map((spec) => (
-                <div className="surface-border rounded-lg bg-white p-5" key={spec.label}>
-                  <p className="text-sm font-semibold uppercase tracking-[0.08em] text-brand-green">
-                    {spec.label}
-                  </p>
-                  <p className="mt-3 text-lg text-brand-ink">{spec.value}</p>
+            <div className="dark-panel p-5 sm:p-6">
+              <div className="grid gap-4 lg:grid-cols-[1.06fr_0.94fr]">
+                <img
+                  alt="Securis product mounted in a gym"
+                  className="w-full rounded-[28px] border border-white/10 object-cover shadow-[var(--shadow-hero)]"
+                  src={productPageData.hero.image}
+                />
+                <div className="grid gap-4">
+                  {productPageData.specs.map((spec) => (
+                    <div className="glass-panel p-5" key={spec.label}>
+                      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-mint">
+                        {spec.label}
+                      </p>
+                      <p className="mt-3 text-base leading-7 text-white/76">{spec.value}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </Reveal>
         </Container>
       </section>
 
-      <section className="section-pad border-b border-brand-border bg-white">
+      <section className="section-pad">
         <Container>
           <Reveal>
             <SectionIntro
-              align="center"
-              description="Real product photos help the story land faster: what it holds, where it mounts, and how it fits into an actual gym."
-              title="Product in use"
+              eyebrow="Product in context"
+              title="What owners need to understand before they ask for a pilot"
+              description="The product page should make it clear where Securis belongs, what behavior it supports, and why it improves the surrounding environment."
             />
           </Reveal>
-          <div className="mt-10 grid gap-4 lg:grid-cols-2">
-            {productPageData.gallery.map((image) => (
-              <Reveal key={image.title}>
-                <div className="overflow-hidden rounded-lg border border-brand-border bg-brand-surface">
-                  <img
-                    alt={image.title}
-                    className="h-full w-full object-cover"
-                    src={image.image}
-                  />
+          <div className="mt-10 grid gap-4 lg:grid-cols-[0.92fr_1.08fr]">
+            <Reveal className="h-full">
+              <div className="light-panel h-full p-7">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-green">Where it works</p>
+                <div className="mt-6 space-y-3">
+                  {productPageData.useCases.map((item) => (
+                    <div className="rounded-2xl border border-brand-border bg-white/70 px-5 py-4 text-base text-brand-ink" key={item}>
+                      {item}
+                    </div>
+                  ))}
                 </div>
-              </Reveal>
-            ))}
+              </div>
+            </Reveal>
+            <Reveal className="h-full">
+              <div className="dark-panel h-full p-8 md:p-10">
+                <SectionIntro
+                  eyebrow="Why it matters"
+                  title="A stronger touchpoint, not just a place to put a phone"
+                  description="The right product framing is about visible convenience, cleaner presentation, and a better experience at the exact moment customers need somewhere to place their essentials."
+                  tone="light"
+                />
+                <div className="mt-8 grid gap-4 md:grid-cols-3">
+                  {productPageData.details.map((detail) => (
+                    <div className="rounded-[24px] border border-white/10 bg-white/6 p-5" key={detail.title}>
+                      <h3 className="text-xl font-semibold tracking-[-0.03em] text-white">{detail.title}</h3>
+                      <p className="mt-3 text-sm leading-6 text-white/70">{detail.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
           </div>
         </Container>
       </section>
 
-      <section className="section-pad border-b border-brand-border bg-white">
+      <section className="section-pad pt-0">
         <Container>
           <Reveal>
             <SectionIntro
               align="center"
-              description="Securis is deliberately simple: protect the phone, create storage, and make the station feel better to use."
-              title="Why the product matters"
+              eyebrow="Real product views"
+              title="Show the product the way a buyer evaluates it"
+              description="Real product photos help the pitch land quickly by showing what it holds, where it belongs, and how it cleans up the surrounding space."
             />
           </Reveal>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
-            {productPageData.details.map((detail) => (
-              <Reveal className="h-full" key={detail.title}>
-                <div className="surface-border h-full rounded-lg bg-brand-surface p-6">
-                  <h3 className="text-2xl font-semibold text-brand-ink">{detail.title}</h3>
-                  <p className="mt-4 text-base leading-7 text-brand-muted">{detail.description}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mt-10 grid gap-4 lg:grid-cols-[1.08fr_0.92fr]">
+            <Reveal>
+              <div className="overflow-hidden rounded-[28px] border border-brand-border bg-brand-surface shadow-[var(--shadow-soft)]">
+                <img
+                  alt={productPageData.gallery[0].title}
+                  className="h-full min-h-[440px] w-full object-cover"
+                  src={productPageData.gallery[0].image}
+                />
+              </div>
+            </Reveal>
+            <div className="grid gap-4">
+              {productPageData.gallery.map((image) => (
+                <Reveal key={image.title}>
+                  <div className="overflow-hidden rounded-[24px] border border-brand-border bg-brand-surface shadow-[var(--shadow-soft)]">
+                    <img alt={image.title} className="h-56 w-full object-cover" src={image.image} />
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
         </Container>
       </section>
 
-      <section className="section-pad bg-brand-surface">
+      <section className="section-pad pt-0">
         <Container className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <Reveal>
-            <SectionIntro
-              description="The key questions decision-makers and early customers will ask first."
-              title="FAQ"
-            />
+            <div className="dark-panel p-8 md:p-10">
+              <SectionIntro
+                description="These are the practical questions business owners and operators tend to ask before they move into a pilot conversation."
+                eyebrow="FAQ"
+                tone="light"
+                title="Answer the questions that decide whether the conversation continues"
+              />
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Button href="/for-businesses#lead-form">Request a demo</Button>
+                <Button href="/contact" variant="secondary">
+                  Ask a specific question
+                </Button>
+              </div>
+            </div>
           </Reveal>
           <div className="grid gap-4">
             {productPageData.faqs.map((faq) => (
               <Reveal key={faq.question}>
-                <div className="surface-border rounded-lg bg-white p-6">
-                  <h3 className="text-xl font-semibold text-brand-ink">{faq.question}</h3>
+                <div className="light-panel p-6">
+                  <h3 className="text-xl font-semibold tracking-[-0.03em] text-brand-ink">{faq.question}</h3>
                   <p className="mt-3 text-base leading-7 text-brand-muted">{faq.answer}</p>
                 </div>
               </Reveal>

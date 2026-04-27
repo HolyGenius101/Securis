@@ -13,3 +13,5 @@ export type LeadFormValues = {
 }
 
 export type FieldErrors = Partial<Record<keyof LeadFormValues, string>>
+
+export type LeadFormStatus = 'idle' | 'loading' | 'success' | 'error'

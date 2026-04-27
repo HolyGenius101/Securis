@@ -1,6 +1,6 @@
 export const navigationLinks = [
   { label: 'Home', href: '/' },
   { label: 'Product', href: '/product' },
-  { label: 'For Gyms', href: '/for-gyms' },
+  { label: 'Use Cases', href: '/for-businesses' },
   { label: 'Contact', href: '/contact' },
 ]

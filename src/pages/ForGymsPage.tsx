@@ -1,60 +1,81 @@
 import { Button } from '../components/common/Button'
 import { Container } from '../components/common/Container'
 import { Reveal } from '../components/common/Reveal'
-import { SectionIntro } from '../components/common/SectionIntro'
 import { LeadCaptureForm } from '../components/forms/LeadCaptureForm'
+import { SectionIntro } from '../components/common/SectionIntro'
 import { gymsPageData } from '../data/gyms'
+
+const rolloutProof = [
+  'Easy to place in one visible zone before expanding.',
+  'Simple enough for staff to understand immediately.',
+  'Strongest when paired with real customer movement and traffic patterns.',
+]
 
 export function ForGymsPage() {
   return (
     <>
-      <section className="border-b border-brand-border bg-[linear-gradient(180deg,#ffffff_0%,#eef2eb_100%)]">
-        <Container className="grid gap-10 py-16 md:py-20 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
+      <section className="overflow-hidden bg-[linear-gradient(180deg,#000000_0%,#0a2b56_74%,#f7efe3_74%,#fcfbf7_100%)]">
+        <Container className="grid min-h-[calc(100svh-88px)] gap-10 py-16 md:py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
           <Reveal>
-            <p className="mb-3 text-sm font-semibold uppercase tracking-[0.08em] text-brand-green">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.14em] text-brand-mint">
               {gymsPageData.hero.eyebrow}
             </p>
-            <h1 className="max-w-3xl text-[2.75rem] font-semibold leading-none tracking-normal text-brand-ink md:text-[4rem]">
+            <h1 className="max-w-4xl text-[3rem] font-semibold leading-[0.94] tracking-[-0.05em] text-white md:text-[4.9rem]">
               {gymsPageData.hero.title}
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-brand-muted">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72">
               {gymsPageData.hero.description}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="#lead-form">Request a demo</Button>
-              <Button href="/contact" variant="secondary">
-                Contact the team
+              <Button href="/product" variant="secondary">
+                Explore the product
               </Button>
             </div>
           </Reveal>
           <Reveal>
-            <div className="rounded-lg border border-brand-border bg-white p-7 shadow-[var(--shadow-soft)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.08em] text-brand-green">
-                Why operators care
-              </p>
-              <ul className="mt-5 space-y-4 text-base leading-7 text-brand-muted">
-                <li>Less clutter around equipment and benches</li>
-                <li>Stronger member convenience without changing machines</li>
-                <li>A visible amenity that feels premium and practical</li>
-              </ul>
+            <div className="dark-panel p-7">
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="rounded-[24px] border border-white/10 bg-white/6 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-mint">
+                    Why decision-makers care
+                  </p>
+                  <ul className="mt-4 space-y-3 text-sm leading-6 text-white/72">
+                    <li>Cleaner visible surfaces and fewer improvised storage habits.</li>
+                    <li>A more premium customer experience without major construction.</li>
+                    <li>A product that can start small and prove itself quickly.</li>
+                  </ul>
+                </div>
+                <div className="rounded-[24px] border border-white/10 bg-white/6 p-5">
+                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-gold">
+                    What a good first pilot looks like
+                  </p>
+                  <ul className="mt-4 space-y-3 text-sm leading-6 text-white/72">
+                    {rolloutProof.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </Reveal>
         </Container>
       </section>
 
-      <section className="section-pad border-b border-brand-border bg-white">
+      <section className="section-pad">
         <Container>
           <Reveal>
             <SectionIntro
-              description="The operator story is simple: better member experience, cleaner stations, and a practical hardware upgrade people notice right away."
-              title="What Securis adds to a facility"
+              eyebrow="Why it lands"
+              title="A business-facing product story should answer the room before it answers the hardware"
+              description="Owners buy this when they can picture how the space gets cleaner, more useful, and more premium from a very small placement decision."
             />
           </Reveal>
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             {gymsPageData.benefits.map((benefit) => (
               <Reveal className="h-full" key={benefit.title}>
-                <div className="surface-border h-full rounded-lg bg-brand-surface p-6">
-                  <h3 className="text-2xl font-semibold text-brand-ink">{benefit.title}</h3>
+                <div className="light-panel h-full p-6 transition duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-soft)]">
+                  <h3 className="text-2xl font-semibold tracking-[-0.03em] text-brand-ink">{benefit.title}</h3>
                   <p className="mt-4 text-base leading-7 text-brand-muted">{benefit.description}</p>
                 </div>
               </Reveal>
@@ -63,48 +84,93 @@ export function ForGymsPage() {
         </Container>
       </section>
 
-      <section className="section-pad border-b border-brand-border bg-brand-surface">
-        <Container className="grid gap-10 lg:grid-cols-2">
+      <section className="section-pad pt-0">
+        <Container>
           <Reveal>
-            <SectionIntro
-              description="Designed to make rollout conversations easy, even for smaller pilot programs."
-              title="How rollout can work"
-            />
-            <div className="mt-8 space-y-3">
-              {gymsPageData.rollout.map((item) => (
-                <div className="surface-border rounded-lg bg-white px-5 py-4 text-base leading-7 text-brand-ink" key={item}>
-                  {item}
+            <div className="dark-panel overflow-hidden p-8 md:p-10">
+              <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+                <div>
+                  <SectionIntro
+                    eyebrow="Where it fits"
+                    title="Best in spaces where people already carry essentials through the experience"
+                    description="The strongest placements are the ones customers understand immediately because they already need a place for their phone, keys, or earbuds."
+                    tone="light"
+                  />
+                  <div className="mt-8 grid gap-3">
+                    {gymsPageData.fit.map((item) => (
+                      <div
+                        className="rounded-2xl border border-white/10 bg-white/6 px-5 py-4 text-base leading-7 text-white/78"
+                        key={item}
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              ))}
-            </div>
-          </Reveal>
-          <Reveal>
-            <SectionIntro
-              description="Keep public pricing directional and handle exact packaging in conversations with operators."
-              title="Pricing direction"
-            />
-            <div className="mt-8 space-y-3">
-              {gymsPageData.pricing.map((item) => (
-                <div className="surface-border rounded-lg bg-white px-5 py-4 text-base leading-7 text-brand-ink" key={item}>
-                  {item}
+                <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
+                  {gymsPageData.rollout.map((item, index) => (
+                    <div className="glass-panel p-5" key={item}>
+                      <div className="text-sm font-semibold tracking-[0.14em] text-brand-gold">0{index + 1}</div>
+                      <p className="mt-3 text-base leading-7 text-white/72">{item}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </Reveal>
         </Container>
       </section>
 
-      <section className="section-pad bg-white">
-        <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+      <section className="section-pad pt-0">
+        <Container>
           <Reveal>
             <SectionIntro
-              description="Tell us about your facility, rollout timeline, or pilot goals. We will come back with a practical next step."
-              title="Start the conversation"
+              eyebrow="Buying conversation"
+              title="Keep the next step simple enough to say yes to"
+              description="Public-facing pricing does not need to be exhaustive. It does need to make the buying path feel low-friction, pilot-friendly, and practical."
             />
+          </Reveal>
+          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+            {gymsPageData.pricing.map((item) => (
+              <Reveal className="h-full" key={item}>
+                <div className="light-panel flex h-full flex-col justify-between p-6">
+                  <p className="text-sm font-semibold uppercase tracking-[0.14em] text-brand-green">
+                    Rollout option
+                  </p>
+                  <p className="mt-5 text-2xl font-semibold tracking-[-0.03em] text-brand-ink">{item}</p>
+                  <Button className="mt-8 w-fit" href="#lead-form" variant="secondary">
+                    Ask about this path
+                  </Button>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="section-pad pt-0">
+        <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
+          <Reveal>
+            <div className="dark-panel p-8 md:p-10">
+              <SectionIntro
+                description="Tell us about your business type, rollout timeline, or the first zone you want to improve and we will come back with a practical next step."
+                eyebrow="Request a demo"
+                tone="light"
+                title="Start with the first area you want to clean up and we will take it from there"
+              />
+              <div className="mt-8 space-y-3 text-sm leading-6 text-white/68">
+                <div className="rounded-2xl border border-white/10 bg-white/6 px-4 py-3">
+                  Best for gyms, studios, wellness brands, and customer-facing spaces evaluating a pilot.
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/6 px-4 py-3">
+                  Share the type of business, number of locations, or where customers currently place their items.
+                </div>
+              </div>
+            </div>
           </Reveal>
           <Reveal>
             <LeadCaptureForm
-              description="This form is built for gym owners, managers, trainers, and operators exploring pilots or bulk orders."
+              description="This form is built for owners, operators, and teams exploring pilot placements or broader rollout conversations."
               interestType="gym-owner"
               sourcePage="for-gyms"
               title="Request a demo"

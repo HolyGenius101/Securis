@@ -23,13 +23,20 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 border-b transition duration-200',
+        'sticky top-0 z-50 px-3 pt-3 transition duration-300 md:px-4',
         scrolled
-          ? 'border-brand-border bg-white/95 backdrop-blur'
-          : 'border-transparent bg-white/90 backdrop-blur',
+          ? 'bg-transparent'
+          : 'bg-transparent',
       )}
     >
-      <Container className="flex h-[72px] items-center justify-between gap-6">
+      <Container
+        className={cn(
+          'flex h-[74px] items-center justify-between gap-6 rounded-[28px] border px-4 shadow-[0_16px_60px_rgba(6,20,14,0.12)] backdrop-blur-2xl transition duration-300 md:px-6',
+          scrolled
+            ? 'border-white/12 bg-brand-night/78 shadow-[0_26px_90px_rgba(6,20,14,0.3)]'
+            : 'border-brand-border/60 bg-white/70',
+        )}
+      >
         <Logo className="shrink-0" compact />
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -37,8 +44,11 @@ export function Navbar() {
             <NavLink
               className={({ isActive }) =>
                 cn(
-                  'text-sm font-medium text-brand-muted transition hover:text-brand-green',
-                  isActive && 'text-brand-ink',
+                  'relative text-sm font-medium transition after:absolute after:-bottom-2 after:left-0 after:h-px after:w-full after:origin-left after:scale-x-0 after:transition after:duration-300',
+                  scrolled
+                    ? 'text-white/70 after:bg-brand-mint hover:text-white'
+                    : 'text-brand-muted after:bg-brand-green hover:text-brand-ink',
+                  isActive && (scrolled ? 'text-white after:scale-x-100' : 'text-brand-ink after:scale-x-100'),
                 )
               }
               key={link.href}
@@ -50,29 +60,34 @@ export function Navbar() {
         </nav>
 
         <div className="hidden md:block">
-          <Button href="/for-gyms">For Gym Owners</Button>
+          <Button href="/for-businesses">Request a Demo</Button>
         </div>
 
         <button
           aria-label="Toggle navigation"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-brand-border md:hidden"
+          className={cn(
+            'inline-flex h-11 w-11 items-center justify-center rounded-full border md:hidden',
+            scrolled
+              ? 'border-white/16 bg-white/6 text-white'
+              : 'border-brand-border/80 bg-white/80 text-brand-ink',
+          )}
           onClick={() => setOpen((current) => !current)}
           type="button"
         >
           <span className="space-y-1.5">
-            <span className="block h-0.5 w-5 bg-brand-ink" />
-            <span className="block h-0.5 w-5 bg-brand-ink" />
-            <span className="block h-0.5 w-5 bg-brand-ink" />
+            <span className={cn('block h-0.5 w-5', scrolled ? 'bg-white' : 'bg-brand-ink')} />
+            <span className={cn('block h-0.5 w-5', scrolled ? 'bg-white' : 'bg-brand-ink')} />
+            <span className={cn('block h-0.5 w-5', scrolled ? 'bg-white' : 'bg-brand-ink')} />
           </span>
         </button>
       </Container>
 
       {open ? (
-        <div className="border-t border-brand-border bg-white md:hidden">
-          <Container className="flex flex-col gap-2 py-4">
+        <div className="px-3 pt-2 md:hidden">
+          <Container className="flex flex-col gap-2 rounded-[28px] border border-white/10 bg-brand-night/92 py-4 shadow-[0_24px_80px_rgba(6,20,14,0.32)] backdrop-blur-2xl">
             {navigationLinks.map((link) => (
               <NavLink
-                className="rounded-lg px-3 py-3 text-sm font-medium text-brand-ink transition hover:bg-brand-surface"
+                className="rounded-2xl px-4 py-3 text-sm font-medium text-white/82 transition hover:bg-white/6 hover:text-white"
                 key={link.href}
                 onClick={() => setOpen(false)}
                 to={link.href}
@@ -80,8 +95,8 @@ export function Navbar() {
                 {link.label}
               </NavLink>
             ))}
-            <Button className="mt-2 w-full" href="/for-gyms">
-              For Gym Owners
+            <Button className="mt-2 w-full" href="/for-businesses">
+              Request a Demo
             </Button>
           </Container>
         </div>
