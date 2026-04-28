@@ -13,7 +13,7 @@ export function Footer() {
         <div className="pointer-events-none absolute -left-12 bottom-0 h-32 w-32 rounded-full bg-brand-gold/10 blur-3xl" />
         <div className="relative flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div className="max-w-md">
-            <Logo tone="dark" />
+            <Logo tone="light" />
             <p className="mt-5 text-sm leading-6 text-white/68">
               Securis helps gyms, studios, and customer-facing businesses create cleaner, more intentional spaces for the items people already carry every day.
             </p>
